@@ -1,30 +1,33 @@
-void zig(){
- 
-  for (int j = 0; j <= 14 ; j++) {
-  beginShape(); 
-    for (int i = 0; i < 14; i++) {
+void zag() {
+        int offset = 50;
+  stroke(255,0,0);
+  pushMatrix(); 
+  translate(offset, offset, 0);
+  for (int i = 0; i < 14; i++) {
+    beginShape(); 
+    for (int j = -1; j < 14; j++) {
       int x =100;
       int y = 100;
-      int offset = 50;
-      if (j % 2 == 0) {
-        if (i % 2 == 0) {
+
+      if (i % 2 == 0) {
+        if (j % 2 == 0) {
           vertex( x * i, y * j, 0 );
           vertex( x * i, y*j, 100);
-          vertex( x * (i+1), y*j, 100);
+          vertex( x * i, y*(j+1), 100);
         }
         else {
           vertex( x * i, y*j, 100 );
           vertex( x * i, y*j, 0);
-          vertex( x * (i+1), y*j, 0);
+          vertex( x * i, y*(j+1), 0);
         }
       } 
       else {
 
 
-        if (i % 2 == 0) {
+        if (j % 2 == 0) {
           vertex( x * i, y*j, 100 );
           vertex( x * i, y*j, 0);
-          vertex( x * (i+1), y*j, 0);
+          vertex( x * i, y*(j+1), 0);
         }
 
         else {
@@ -32,9 +35,13 @@ void zig(){
 
           vertex( x * i, y * j, 0 );
           vertex( x * i, y*j, 100);
-          vertex( x * (i+1), y*j, 100);
+          vertex( x * i, y*(j+1), 100);
         }
       }
     }    
     endShape();
-  }}
+  }
+        popMatrix();
+
+}
+
